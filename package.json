@@ -38,7 +38,7 @@
     "react-dom": "16.0.0",
     "react-router-dom": "^4.2.2"
   },
-  "devDependencies": {
+  "devDependencies": 
     "@chassi-dev/chassi-javascript-validators": "0.1.1",
     "@chassi-dev/chassi-react-mui-components": "^0.9.4",
     "@storybook/addon-actions": "3.2.14",
@@ -63,7 +63,7 @@
     "react-dom": "16.0.0",
     "react-redux": "5.0.6",
     "react-scripts": "1.0.17",
-    "react-test-renderer": "16.0.0",
+    "react-test-renderer": "^16.0.0",
     "storybook-router": "^0.3.2"
   }
 }
