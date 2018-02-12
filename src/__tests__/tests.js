@@ -16,7 +16,15 @@ describe('InputValidation', () => {
         ReactDOM.render(<App />, div);
     });
 
+    it('smokescreen test for render of InputValidation component', () => {
+        const wrapper = shallow(<App />);
+        const inputValidation = <InputValidation />;
+        expect(wrapper.contains(inputValidation)).toBe(true);
+    });
 
+    it('should render InputValidation component', () => {
+        shallow(<InputValidation/>)
+    });
 
 });
 
