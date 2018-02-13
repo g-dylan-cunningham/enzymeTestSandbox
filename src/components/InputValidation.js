@@ -74,6 +74,7 @@ class InputValidation extends React.Component {
                 >
                     submit
                 </Button>
+                <h1>hello</h1>
             </div>
         )
     };
