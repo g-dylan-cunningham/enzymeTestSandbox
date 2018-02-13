@@ -4,7 +4,7 @@ import App from '../App';
 import InputValidation from '../components/InputValidation';
 import { ValidatedInput, ValidatedPassword, Button } from '@chassi-dev/chassi-react-mui-components';
 import { shallow } from 'enzyme';
-
+import { shallowToJson } from 'enzyme-to-json';
 
 describe('InputValidation', () => {
 
@@ -32,6 +32,14 @@ describe('InputValidation', () => {
         const test = <ValidatedInput/>;
 
         expect(!!wrapper.find(test)).toBe(true)
-    })
+    });
+
+    it('should create a snapshot', () => {
+        const output = shallow(
+            <h1>hello</h1>
+        )
+        expect(shallowToJson(output)).toMatchSnapshot();
+    });
+
 
 });
