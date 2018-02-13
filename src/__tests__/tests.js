@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../App';
 import InputValidation from '../components/InputValidation';
+import { ValidatedInput, ValidatedPassword, Button } from '@chassi-dev/chassi-react-mui-components';
 import { shallow } from 'enzyme';
 
 
@@ -26,7 +27,11 @@ describe('InputValidation', () => {
         shallow(<InputValidation/>)
     });
 
+    it('should render Button component', () => {
+        const wrapper = shallow(<InputValidation />)
+        const test = <ValidatedInput/>;
+
+        expect(!!wrapper.find(test)).toBe(true)
+    })
+
 });
-
-
-// ReactDom.render(<InputValidation />, div)
