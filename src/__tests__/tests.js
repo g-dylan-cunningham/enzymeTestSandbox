@@ -27,19 +27,42 @@ describe('InputValidation', () => {
         shallow(<InputValidation/>)
     });
 
-    it('should render Button component', () => {
+    it('should find a ValidatedInput component', () => {
         const wrapper = shallow(<InputValidation />)
-        const test = <ValidatedInput/>;
+        const vi = <ValidatedInput label="email"/>;
 
-        expect(!!wrapper.find(test)).toBe(true)
+        expect(!!wrapper.find(vi)).toBe(true)
     });
+
+    it('should find Button component', () => {
+        const wrapper = shallow(<InputValidation />);
+        const button = <Button />;
+
+        expect(!!wrapper.find(button)).toBe(true);
+    });
+
+    it('should find Button component by class', () => {
+        const wrapper = shallow(<InputValidation />);
+
+        expect(!!wrapper.find('.testClass')).toBe(true);
+    });
+
+    it('should find ValidatedInput component by name', () => {
+        const wrapper = shallow(<InputValidation />);
+
+        expect(!!wrapper.find('email')).toBe(true);
+    });
+
+
+
 
     it('should create a snapshot', () => {
         const output = shallow(
             <h1>hello</h1>
-        )
+        );
         expect(shallowToJson(output)).toMatchSnapshot();
     });
+
 
 
 });
