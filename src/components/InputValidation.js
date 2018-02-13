@@ -30,7 +30,6 @@ class InputValidation extends React.Component {
     };
 
 
-
     render () {
         const { buttonEnabled } = this.state;
 
@@ -40,7 +39,7 @@ class InputValidation extends React.Component {
                     label="Phone"
                     adornment=""
                     adornmentPosition="end"
-                    validator={value => !!isPhone(value)}
+                    validator={isPhone}
                     invalidMessage="enter a valid phone number"
                     onValidate={output => this.onValidatedField(output)}
                     name="phone"
@@ -50,7 +49,7 @@ class InputValidation extends React.Component {
                     label="Email"
                     adornment=""
                     adornmentPosition="end"
-                    validator={value => !!isEmail(value)}
+                    validator={isEmail}
                     invalidMessage="enter a valid email"
                     onValidate={output => this.onValidatedField(output)}
                     name="email"
@@ -60,7 +59,7 @@ class InputValidation extends React.Component {
                     label="Password"
                     adornment=""
                     adornmentPosition="end"
-                    validator={value => !!isPassword(value)}
+                    validator={isPassword}
                     invalidMessage="enter a valid password"
                     onValidate={output => this.onValidatedField(output)}
                     name="password"
@@ -74,7 +73,7 @@ class InputValidation extends React.Component {
                 >
                     submit
                 </Button>
-                <h1>hello</h1>
+                <h1 className='testClass' >hello</h1>
             </div>
         )
     };
