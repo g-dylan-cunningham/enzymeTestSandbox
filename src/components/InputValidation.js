@@ -11,12 +11,18 @@ class InputValidation extends React.Component {
             phone: false,
             email: false,
             password: false,
-            buttonEnabled: false
+            buttonEnabled: false,
+            testForm: ''
         };
+        this.testHandleChange = this.testHandleChange.bind(this);
     };
 
-    onValidatedField = (output) => {
+    testHandleChange(e) {
+        this.setState({testForm: e.target.value});
+    }
 
+    onValidatedField = (output) => {
+        console.log(output, 'output')
         const stateObject = {
             ...this.state,
         };
@@ -36,32 +42,35 @@ class InputValidation extends React.Component {
         return (
             <div>
                 <ValidatedInput
+                    className="validatedPhoneClass"
                     label="Phone"
                     adornment=""
                     adornmentPosition="end"
                     validator={isPhone}
                     invalidMessage="enter a valid phone number"
-                    onValidate={output => this.onValidatedField(output)}
+                    onValidate={this.onValidatedField}
                     name="phone"
                 />
 
                 <ValidatedInput
+                    className="validatedEmailClass"
                     label="Email"
                     adornment=""
                     adornmentPosition="end"
                     validator={isEmail}
                     invalidMessage="enter a valid email"
-                    onValidate={output => this.onValidatedField(output)}
+                    onValidate={this.onValidatedField}
                     name="email"
                 />
 
                 <ValidatedPassword
+                    className="validatedPWClass"
                     label="Password"
                     adornment=""
                     adornmentPosition="end"
                     validator={isPassword}
                     invalidMessage="enter a valid password"
-                    onValidate={output => this.onValidatedField(output)}
+                    onValidate={this.onValidatedField}
                     name="password"
                 />
 
@@ -73,7 +82,17 @@ class InputValidation extends React.Component {
                 >
                     submit
                 </Button>
+
                 <h1 className='testClass' >hello</h1>
+
+                <form>
+                    <label>
+                        Name:
+                        <input className='input' value={this.state.testForm} onChange={this.testHandleChange} type="text" name="name" />
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
+
             </div>
         )
     };
