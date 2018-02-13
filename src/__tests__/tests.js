@@ -54,8 +54,6 @@ describe('InputValidation', () => {
     });
 
 
-
-
     it('should create a snapshot', () => {
         const output = shallow(
             <h1>hello</h1>
@@ -64,5 +62,23 @@ describe('InputValidation', () => {
     });
 
 
+    it('should find element type of .testClass', () => {
+        const wrapper = shallow(<InputValidation/>);
+        const result = wrapper.find('.testClass').type();
+        expect(result).toBe('h1')
+    })
+
+    it('should find type of validatedPassword component', () => {
+        const wrapper = shallow(<InputValidation/>);
+        const component = wrapper.find('.validatedPWClass').type();
+        expect(component).toBe(ValidatedPassword);
+    });
+
+    it('should set state on testForm with change event', () =>{
+        const wrapper = shallow(<InputValidation/>);
+        const input = wrapper.find('.input');
+        input.simulate('change', {target: { value : 'testValue'}})
+        console.log('2nd', input, wrapper.state())
+    })
 
 });
