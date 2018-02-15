@@ -1,15 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from '../App';
 import InputValidation from '../components/InputValidation';
-import { ValidatedInput, ValidatedPassword, Button } from '@chassi-dev/chassi-react-mui-components';
-import Input, { InputAdornment, InputLabel } from 'material-ui/Input';
-import { FormControl, FormHelperText } from 'material-ui/Form';
 import sinon from 'sinon';
-import { isPhone, isPassword, isEmail } from "@chassi-dev/chassi-javascript-validators";
-// import ValidatedInput from '../components/synapse/validated-input'
-
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 
 let wrapper;
 let clock;
