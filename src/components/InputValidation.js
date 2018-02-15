@@ -12,17 +12,22 @@ class InputValidation extends React.Component {
             email: false,
             password: false,
             buttonEnabled: false,
-            testForm: ''
+            testForm: 'default'
         };
+
         this.testHandleChange = this.testHandleChange.bind(this);
     };
+
+    shouldComponentUpdate(nextProps, nextState){
+        // console.log("nextProps", nextProps, nextState)
+    }
 
     testHandleChange(e) {
         this.setState({testForm: e.target.value});
     }
 
     onValidatedField = (output) => {
-        console.log(output, 'output')
+
         const stateObject = {
             ...this.state,
         };
@@ -40,7 +45,7 @@ class InputValidation extends React.Component {
         const { buttonEnabled } = this.state;
 
         return (
-            <div>
+            <div className='inputValidComp'>
                 <ValidatedInput
                     className="validatedPhoneClass"
                     label="Phone"
@@ -75,6 +80,7 @@ class InputValidation extends React.Component {
                 />
 
                 <Button
+                    className="button"
                     raised color="primary"
                     icon=""
                     disabled={!buttonEnabled}
@@ -88,7 +94,7 @@ class InputValidation extends React.Component {
                 <form>
                     <label>
                         Name:
-                        <input className='input' value={this.state.testForm} onChange={this.testHandleChange} type="text" name="name" />
+                        <input className='input' value={this.state.testForm} onChange={this.testHandleChange} type="text" name="testForm" />
                     </label>
                     <input type="submit" value="Submit" />
                 </form>
