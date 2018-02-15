@@ -12,10 +12,12 @@ import { isPhone, isPassword, isEmail } from "@chassi-dev/chassi-javascript-vali
 import { shallow, mount } from 'enzyme';
 
 let wrapper;
+let clock;
 describe('InputValidation', () => {
 
     beforeAll(() => {
         wrapper = mount(<InputValidation />);
+        clock = sinon.useFakeTimers();
     });
 
     it('should be disabled when invalid (includes default)', () => {
@@ -23,7 +25,7 @@ describe('InputValidation', () => {
     });
 
     it('should be enabled when valid', () => {
-        const clock = sinon.useFakeTimers();
+
         const phone = wrapper.find('input#phone');
         const email = wrapper.find('input#email');
         const password = wrapper.find('input#password');
@@ -38,9 +40,57 @@ describe('InputValidation', () => {
 
         console.warn('disabled after timeout', wrapper.find('button').prop('disabled'));
         expect(wrapper.find('button').prop('disabled')).toBe(false);
+        clock.reset();
 
 
     });
 
+    it('should be diabled when invalid phone is present', () => {
+        const phone = wrapper.find('input#phone');
+        const email = wrapper.find('input#email');
+        const password = wrapper.find('input#password');
+
+        phone.simulate('keyup', {target: {value: '1'}});
+        email.simulate('keyup', {target: {value: 'a@a.com'}});
+        password.simulate('keyup', {target: {value: 'aA1!bbbb'}});
+
+        clock.tick(1000);
+        wrapper.update();
+
+        expect(wrapper.find('button').prop('disabled')).toBe(true);
+        clock.reset();
+    });
+
+    it('should be diabled when invalid Email is present', () => {
+        const phone = wrapper.find('input#phone');
+        const email = wrapper.find('input#email');
+        const password = wrapper.find('input#password');
+
+        phone.simulate('keyup', {target: {value: '123-123-1234'}});
+        email.simulate('keyup', {target: {value: 'a@a'}});
+        password.simulate('keyup', {target: {value: 'aA1!bbbb'}});
+
+        clock.tick(1000);
+        wrapper.update();
+
+        expect(wrapper.find('button').prop('disabled')).toBe(true);
+        clock.reset();
+    });
+
+    it('should be diabled when invalid password is present', () => {
+        const phone = wrapper.find('input#phone');
+        const email = wrapper.find('input#email');
+        const password = wrapper.find('input#password');
+
+        phone.simulate('keyup', {target: {value: '123-123-1234'}});
+        email.simulate('keyup', {target: {value: 'a@a.com'}});
+        password.simulate('keyup', {target: {value: 'a'}});
+
+        clock.tick(1000);
+        wrapper.update();
+
+        expect(wrapper.find('button').prop('disabled')).toBe(true);
+        clock.reset();
+    });
 
 });
