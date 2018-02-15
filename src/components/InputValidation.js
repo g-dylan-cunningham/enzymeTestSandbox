@@ -18,9 +18,6 @@ class InputValidation extends React.Component {
         this.testHandleChange = this.testHandleChange.bind(this);
     };
 
-    shouldComponentUpdate(nextProps, nextState){
-        // console.log("nextProps", nextProps, nextState)
-    }
 
     testHandleChange(e) {
         this.setState({testForm: e.target.value});
@@ -38,6 +35,7 @@ class InputValidation extends React.Component {
         this.setState({
             ...stateObject
         });
+        console.log(this.state)
     };
 
 
