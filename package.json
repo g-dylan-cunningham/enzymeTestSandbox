@@ -6,7 +6,6 @@
     "build": "npm run build:lib",
     "build:lib": "react-build-lib",
     "build:dist": "react-build-dist --bundle-name Demo.js",
-    "precommit": "lint-staged",
     "prepublish": "npm run build",
     "prettier": "prettier --single-quote --trailing-comma es5 --write",
     "start": "react-scripts start",
@@ -21,6 +20,8 @@
   "author": "anthony kulis <anthony@saasindustries.com>",
   "license": "ISC",
   "dependencies": {
+    "@chassi-dev/chassi-javascript-validators": "0.1.0",
+    "@chassi-dev/chassi-react-mui-components": "^0.10.10",
     "classnames": "2.2.5",
     "draft-js": "0.10.4",
     "draft-js-export-html": "1.2.0",
@@ -39,22 +40,9 @@
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
-    "@chassi-dev/chassi-javascript-validators": "0.1.1",
-    "@chassi-dev/chassi-react-mui-components": "^0.9.4",
-    "@storybook/addon-actions": "3.2.14",
-    "@storybook/addon-info": "3.2.14",
-    "@storybook/addon-knobs": "3.2.14",
-    "@storybook/addon-links": "3.2.14",
-    "@storybook/addon-options": "3.2.14",
-    "@storybook/addon-storyshots": "3.2.14",
-    "@storybook/react": "3.2.14",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "enzyme-to-json": "^3.3.1",
     "husky": "0.14.3",
-    "jest": "^22.2.2",
-    "jest-cli": "^22.2.2",
-    "jest-enzyme": "^4.2.0",
     "lint-staged": "4.3.0",
     "prettier": "1.8.1",
     "prop-types": "15.6.0",
@@ -65,6 +53,7 @@
     "react-redux": "5.0.6",
     "react-scripts": "1.0.17",
     "react-test-renderer": "^16.0.0",
+    "sinon": "^4.3.0",
     "storybook-router": "^0.3.2"
   }
 }
