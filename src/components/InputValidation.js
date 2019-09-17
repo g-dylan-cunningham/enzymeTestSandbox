@@ -16,17 +16,15 @@ class InputValidation extends React.Component {
         };
 
         this.testHandleChange = this.testHandleChange.bind(this);
+        this.onValidatedField = this.onValidatedField.bind(this);
     };
 
-    shouldComponentUpdate(nextProps, nextState){
-        // console.log("nextProps", nextProps, nextState)
-    }
 
     testHandleChange(e) {
         this.setState({testForm: e.target.value});
     }
 
-    onValidatedField = (output) => {
+    onValidatedField (output) {
 
         const stateObject = {
             ...this.state,
@@ -44,9 +42,14 @@ class InputValidation extends React.Component {
     render () {
         const { buttonEnabled } = this.state;
 
+        const button = buttonEnabled ?
+            <Button type="submit" color="primary" raised>Button</Button> :
+            <Button type="submit" color="primary" raised disabled>Button</Button>
+
         return (
-            <div className='inputValidComp'>
+            <form className='inputValidComp'>
                 <ValidatedInput
+                    id="phone"
                     className="validatedPhoneClass"
                     label="Phone"
                     adornment=""
@@ -58,6 +61,7 @@ class InputValidation extends React.Component {
                 />
 
                 <ValidatedInput
+                    id="email"
                     className="validatedEmailClass"
                     label="Email"
                     adornment=""
@@ -69,6 +73,7 @@ class InputValidation extends React.Component {
                 />
 
                 <ValidatedPassword
+                    id="password"
                     className="validatedPWClass"
                     label="Password"
                     adornment=""
@@ -79,27 +84,11 @@ class InputValidation extends React.Component {
                     name="password"
                 />
 
-                <Button
-                    className="button"
-                    raised color="primary"
-                    icon=""
-                    disabled={!buttonEnabled}
-                    type='submit'
-                >
-                    submit
-                </Button>
 
-                <h1 className='testClass' >hello</h1>
+            {button}
 
-                <form>
-                    <label>
-                        Name:
-                        <input className='input' value={this.state.testForm} onChange={this.testHandleChange} type="text" name="testForm" />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
 
-            </div>
+            </form>
         )
     };
 };
